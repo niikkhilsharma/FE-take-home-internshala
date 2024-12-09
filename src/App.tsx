@@ -143,7 +143,7 @@ const App: React.FC = () => {
 					)}
 					<div className="w-full flex justify-center items-center">
 						<Button
-							className="mx-auto bg-blue-500/70 hover:bg-blue-500/80 text-black"
+							className="mx-auto bg-[#D1CFFF] hover:bg-[#D1CFFF]/90 text-black"
 							onClick={() => {
 								if (postData) {
 									const blob = new Blob([JSON.stringify(postData, null, 2)], {

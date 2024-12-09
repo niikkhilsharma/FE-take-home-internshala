@@ -19,12 +19,20 @@ export const generateColumns = <T extends { id: number; title?: string; name?: s
 	{
 		accessorFn: row => row.id,
 		id: 'id',
-		header: 'ID',
+		header: () => <div className="text-center mx-1 sm:mx-4 w-12 sm:w-[100px]">ID</div>,
+		cell: ({ getValue }) => (
+			<div className="text-center mx-4 w-12 sm:w-[100px]">{String(getValue())}</div> // Ensure getValue() is a string
+		),
 	},
 	{
 		accessorFn: row => (contentType === 'posts' ? row.title : row.name) || 'N/A',
 		id: contentType === 'posts' ? 'title' : 'name',
-		header: contentType === 'posts' ? 'Title' : 'Name', // Dynamically set the header
+		header: () => (
+			<div className="text-start mx-1 sm:mx-4">{contentType === 'posts' ? 'Title' : 'Name'}</div>
+		),
+		cell: ({ getValue }) => (
+			<div className="text-start mx-1 sm:mx-4">{String(getValue())}</div> // Ensure getValue() is a string
+		),
 	},
 	{
 		id: 'actions',
